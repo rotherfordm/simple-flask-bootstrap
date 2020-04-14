@@ -33,5 +33,5 @@ if not app.debug:
 
 from app import routes
 
-port = int(os.environ.get('PORT', 1122))
+port = int(os.environ.get('PORT', 80))
 waitress.serve(app, port=port)
