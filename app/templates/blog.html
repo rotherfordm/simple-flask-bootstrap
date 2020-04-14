@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My blog</title>
+    <title>My Blog</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -62,30 +62,21 @@
 
       <div class="nav-scroller py-1 mb-2">
         <nav class="nav d-flex justify-content-between">
-          <a class="p-2 text-muted" href="#">World</a>
-          <a class="p-2 text-muted" href="#">U.S.</a>
-          <a class="p-2 text-muted" href="#">Technology</a>
-          <a class="p-2 text-muted" href="#">Design</a>
-          <a class="p-2 text-muted" href="#">Culture</a>
-          <a class="p-2 text-muted" href="#">Business</a>
-          <a class="p-2 text-muted" href="#">Politics</a>
-          <a class="p-2 text-muted" href="#">Opinion</a>
-          <a class="p-2 text-muted" href="#">Science</a>
-          <a class="p-2 text-muted" href="#">Health</a>
-          <a class="p-2 text-muted" href="#">Style</a>
-          <a class="p-2 text-muted" href="#">Travel</a>
+          
+          {% for topic in topics %}
+            <a class="p-2 text-muted" href="#">{{topic}}</a>
+          {% endfor %}
         </nav>
+      
       </div>
 
       <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
         <div class="col-md-6 px-0">
           <h1 class="display-4 font-italic">
-            Title of a longer featured blog post
+            {{head_post.title}}
           </h1>
           <p class="lead my-3">
-            Multiple lines of text that form the lede, informing new readers
-            quickly and efficiently about what’s most interesting in this post’s
-            contents.
+           {{head_post.body}}
           </p>
           <p class="lead mb-0">
             <a href="#" class="text-white font-weight-bold"
@@ -102,11 +93,10 @@
           >
             <div class="col p-4 d-flex flex-column position-static">
               <strong class="d-inline-block mb-2 text-primary">World</strong>
-              <h3 class="mb-0">Featured post</h3>
-              <div class="mb-1 text-muted">Nov 12</div>
+              <h3 class="mb-0">{{post1.title}}</h3>
+              <div class="mb-1 text-muted">{{post1.date}}</div>
               <p class="card-text mb-auto">
-                This is a wider card with supporting text below as a natural
-                lead-in to additional content.
+                {{post1.body}}
               </p>
               <a href="#" class="stretched-link">Continue reading</a>
             </div>
@@ -134,11 +124,11 @@
           >
             <div class="col p-4 d-flex flex-column position-static">
               <strong class="d-inline-block mb-2 text-success">Design</strong>
-              <h3 class="mb-0">Post title</h3>
-              <div class="mb-1 text-muted">Nov 11</div>
+              <h3 class="mb-0">{{post2.title}}</h3>
+              <div class="mb-1 text-muted">{{post2.date}}</div>
               <p class="mb-auto">
-                This is a wider card with supporting text below as a natural
-                lead-in to additional content.
+                {{post2.body}}
+                
               </p>
               <a href="#" class="stretched-link">Continue reading</a>
             </div>
