@@ -2,23 +2,13 @@ import logging
 import os
 from logging.handlers import SMTPHandler, RotatingFileHandler
 from config import Config
-
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
-from flask_login import LoginManager
+
+import waitress
 
 
 app = Flask(__name__)
 app.config.from_object(Config)
-
-db = SQLAlchemy(app)
-
-migrate = Migrate(app, db, compare_type=True)
-migrate.init_app(app)
-
-login = LoginManager(app)
-login.login_view = "login"
 
 if not app.debug:
     if app.config["LOG_TO_STDOUT"]:
@@ -41,5 +31,7 @@ if not app.debug:
     app.logger.setLevel(logging.INFO)
     app.logger.info("Application startup")
 
-from app import routes, models
+from app import routes
 
+port = int(os.environ.get('PORT', 1122))
+waitress.serve(app, port=port)
